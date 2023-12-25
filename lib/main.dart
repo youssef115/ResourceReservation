@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spring/screens/Home_screen.dart';
 import 'package:flutter_spring/screens/login_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ProviderScope(child:const MyApp()) );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +17,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple,brightness: Brightness.light),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple,
+        brightness: Brightness.light),
         useMaterial3: true,
       ),
-      home:  LoginScreen()
+      home:  HomeScreen()
     );
   }
 }
