@@ -2,15 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spring/screens/Home_screen.dart';
 import 'package:flutter_spring/screens/login_screen.dart';
+import 'package:flutter_spring/screens/waiting_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(ProviderScope(child:const MyApp()) );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+    String? _token;
+  @override
+  void initState() {
+    super.initState();
+    
+    Future.delayed(const Duration(milliseconds: 2000),(){
+    _getToken();
+    });
+  }
+  
+
+    Future<void> _getToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? '';
+    setState(() {
+      _token = token;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +45,12 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light),
         useMaterial3: true,
       ),
-      home:  HomeScreen()
+      home:  _token==null?
+      WaitingScreen():
+      _token==""?
+      LoginScreen()
+      :HomeScreen()      
+      ,
     );
   }
 }

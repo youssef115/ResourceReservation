@@ -3,9 +3,9 @@ import 'package:flutter_spring/data/dummy_data.dart';
 import 'package:flutter_spring/widgets/Category_grid_item.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+  const CategoryScreen({super.key, this.categoryList});
   
-  
+  final categoryList;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CategoryScreen extends StatelessWidget {
             childAspectRatio: 3/2
             ),
           children: [
-            for (final category in availableCategories)
+            for (final category in categoryList)
             CategoryGridItem(category: category)
           ],
         ),

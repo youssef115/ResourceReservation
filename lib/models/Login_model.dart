@@ -18,6 +18,6 @@ LoginModel({
 });
     
     @override
-    String toString() => 'LoginModel(email:$email, password:$password)';
+    String toString() => '{email:$email,password:$password}';
 
 }
