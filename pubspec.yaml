@@ -40,6 +40,8 @@ dependencies:
   transparent_image: ^2.0.1
   http: ^1.1.0
   shared_preferences: ^2.2.2
+  internet_connection_checker: ^1.0.0+1
+  liquid_pull_to_refresh: ^3.0.1
   #awesome_dialog: ^3.1.0
 
 dev_dependencies:
@@ -69,6 +71,7 @@ flutter:
     - images/register.svg
     - images/waiting.svg
     - images/login.svg
+    - images/404.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

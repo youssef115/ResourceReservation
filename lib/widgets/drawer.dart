@@ -17,7 +17,7 @@ final void Function(String identifier) onSelectScreen;
   Widget build(BuildContext context,WidgetRef ref) {
 
     final user=ref.watch(userProvider);
-    //print(user);
+    
     return  Drawer(
       child: Column(
         children: [
@@ -40,13 +40,15 @@ final void Function(String identifier) onSelectScreen;
                 ),
                 ListTile(
                   onTap: (){
-                    onSelectScreen("favorite");
+                    onSelectScreen(user!.role=="Provider"?"manage Tool":"favorite");
                   },
-                  leading: Icon(Icons.favorite,color: Theme.of(context).colorScheme.onBackground,),
-                  title:Text("favorite",style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  leading: Icon(user!.role=="Provider"?Icons.settings:Icons.favorite,color: Theme.of(context).colorScheme.onBackground,),
+                  title:Text(user!.role=="Provider"?"manage Tool":"favorite",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: Theme.of(context).colorScheme.primary
                 ),),
                 ),
+
                 ListTile(
                   onTap: (){
                     deleteToken();
@@ -58,6 +60,7 @@ final void Function(String identifier) onSelectScreen;
                   color: Theme.of(context).colorScheme.primary
                 ),),
                 ),
+                
         ],
       ),
     );

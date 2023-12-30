@@ -13,8 +13,11 @@ class CategoryGridItem extends StatelessWidget {
   final Category category;
 
 
+
   @override
   Widget build(BuildContext context) {
+    // dummy tools list empty
+  final List<Tool> dummyTools = [];
     return InkWell(
       onTap: () {
         final List<Tool> filteredTool = dummyTools

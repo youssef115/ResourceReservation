@@ -1,20 +1,46 @@
 
 class Tool{
-  final int id;
-  final int category;
-  final String title;
-  final String imageUrl;
-  final String smallDescription;
-  final double rentPriceParHour;
+   int id;
+   int category;
+   String title;
+   String imageUrl;
+   String smallDescription;
+   double rentPriceParHour;
 
-  const Tool({
-    required this.id,
-    required this.category,
-    required this.title,
-    required this.imageUrl,
-    required this.smallDescription,
-    required this.rentPriceParHour
+   Tool({
+     this.id=0,
+     this.category=0,
+     this.title="",
+     this.imageUrl="",
+     this.smallDescription="",
+     this.rentPriceParHour=0.0
     
   });
+
+  get getId => this.id;
+
+ set setId( id) => this.id = id;
+
+  get getCategory => this.category;
+
+ set setCategory( category) => this.category = category;
+
+  get getTitle => this.title;
+
+ set setTitle( title) => this.title = title;
+
+  get getImageUrl => this.imageUrl;
+
+ set setImageUrl( imageUrl) => this.imageUrl = imageUrl;
+
+  get getSmallDescription => this.smallDescription;
+
+ set setSmallDescription( smallDescription) => this.smallDescription = smallDescription;
+
+  get getRentPriceParHour => this.rentPriceParHour;
+
+ set setRentPriceParHour( rentPriceParHour) => this.rentPriceParHour = rentPriceParHour;
+
+
 }
 

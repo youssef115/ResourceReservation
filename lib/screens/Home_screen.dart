@@ -6,6 +6,8 @@ import 'package:flutter_spring/providers/favorites_provider.dart';
 import 'package:flutter_spring/providers/user_provider.dart';
 import 'package:flutter_spring/screens/CategoryScreen.dart';
 import 'package:flutter_spring/screens/login_screen.dart';
+import 'package:flutter_spring/screens/mangeToolScreen.dart';
+import 'package:flutter_spring/screens/serverProblem.dart';
 import 'package:flutter_spring/screens/tool_screen.dart';
 import 'package:flutter_spring/widgets/Category_grid_item.dart';
 import 'package:flutter_spring/widgets/drawer.dart';
@@ -27,6 +29,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   List<Category> _data = [];
   User user=User();
   bool _isLoading = true;
+  bool isServerProblem=false;
   @override
   void initState() {
     super.initState();
@@ -86,6 +89,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       print('Exception while fetching data: $error');
       setState(() {
         _isLoading = false;
+        isServerProblem=true;
       });
     }
   }
@@ -132,6 +136,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       print('Exception while fetching user data: $error');
       setState(() {
         _isLoading = false;
+        isServerProblem=true;
       });
     }
  }
@@ -146,13 +151,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         final tool=ref.watch(favoriteToolProviders);
         Navigator.of(context).pop();
         Navigator.push(context,MaterialPageRoute(builder:(context)=>ToolScreen(title: "Favorite tools",tools: tool,)));
-      } else {
+      }else if(identifier == "manage Tool"){
+          Navigator.of(context).pop();
+          Navigator.push(context,MaterialPageRoute(builder:(context)=>MnageToolScreen()));
+      } 
+      else {
         Navigator.of(context).pop();
       }
     }
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: isServerProblem?null:AppBar(
         title: Text("Home Screen"),
         backgroundColor: Theme.of(context).colorScheme.primary,
         titleTextStyle: TextStyle(
@@ -162,10 +171,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onSelectScreen: _setScreen,
       ),
       body: Center(
-          child: _isLoading
+          child: isServerProblem? ServerProblemScreen(): 
+              _isLoading
               ? CircularProgressIndicator() // Show a loader while fetching data
               : _data.isEmpty
-                  ? Text('No data available')
+                  ? Text('No data available ...')
                   : Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
