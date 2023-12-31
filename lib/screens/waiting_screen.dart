@@ -28,7 +28,7 @@ class WaitingScreen extends StatelessWidget {
                  SvgPicture.asset("images/waiting.svg", width: 220, height: 220),
                  SizedBox(height: 20,),
                  CircularProgressIndicator(color: Theme.of(context).colorScheme.primary.withOpacity(0.5),),
-                  NoInternet()
+                  //NoInternet()
               ],
             )
           ),

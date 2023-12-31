@@ -7,6 +7,7 @@ import 'package:flutter_spring/providers/user_provider.dart';
 import 'package:flutter_spring/screens/CategoryScreen.dart';
 import 'package:flutter_spring/screens/login_screen.dart';
 import 'package:flutter_spring/screens/mangeToolScreen.dart';
+import 'package:flutter_spring/screens/reservedTool.dart';
 import 'package:flutter_spring/screens/serverProblem.dart';
 import 'package:flutter_spring/screens/tool_screen.dart';
 import 'package:flutter_spring/widgets/Category_grid_item.dart';
@@ -117,6 +118,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       if (response.statusCode == 200) {
         setState(() {
           var resjson = jsonDecode(response.body);
+          user.setId=resjson["response"]["id"];
           user.setToken=_token;
           user.setEmail=_email;
           user.setFirstname=resjson["response"]["firstname"];
@@ -124,6 +126,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           user.setCin=resjson["response"]["cin"];
           user.setRole=resjson["response"]["role"];
           ref.read(userProvider.notifier).login(user);
+          print(user.id);
           _isLoading = false;
         });
       } else {
@@ -156,7 +159,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Navigator.push(context,MaterialPageRoute(builder:(context)=>MnageToolScreen()));
       } 
       else {
+        final user=ref.watch(userProvider);
+        if(user?.role=="USER"){
+             Navigator.of(context).pop();
+          Navigator.push(context,MaterialPageRoute(builder:(context)=>ReservedTool()));
+        }else{
         Navigator.of(context).pop();
+        }
       }
     }
 

@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spring/models/Category_model.dart';
 import 'package:flutter_spring/models/tool_model.dart';
 
-const List<Category> availableCategories = [
-  Category(
-    id: '1',
-    title: 'light Tools',
-    color: Colors.purple,
-  ),
-  Category(
-    id: '2',
-    title: 'heavy Tools',
-    color: Colors.red,
-  ),
-  Category(
-    id: '3',
-    title: 'Electronic Tools',
-    color: Colors.orange,
-  ),];
+// const List<Category> availableCategories = [
+//   Category(
+//     id: '1',
+//     title: 'light Tools',
+//     color: Colors.purple,
+//   ),
+//   Category(
+//     id: '2',
+//     title: 'heavy Tools',
+//     color: Colors.red,
+//   ),
+//   Category(
+//     id: '3',
+//     title: 'Electronic Tools',
+//     color: Colors.orange,
+//   ),];
 
   // const List<Tool> dummyTools=
   //   [

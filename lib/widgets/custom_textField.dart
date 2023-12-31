@@ -9,27 +9,30 @@ class CustomTextField extends StatelessWidget {
       this.hint = "",
       this.filterInput,
       this.validation,
-      this.onsaved, required this.icon,
+      this.onsaved, this.icon, this.initialValue,
       });
 
   final TextInputType? typeClavier;
   final String label;
   final String hint;
-  final IconData icon;
+  final IconData? icon;
   final List<TextInputFormatter>? filterInput;
   final String? Function(String?)? validation;
   final void Function(String?)? onsaved;
+  final String? initialValue;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+    
       style: TextStyle(color: Theme.of(context).colorScheme.secondary, fontSize: 18),
       keyboardType: typeClavier,
       inputFormatters: filterInput,
+      initialValue: initialValue!=null? initialValue : null,
       decoration: InputDecoration(
         errorStyle: TextStyle(fontSize: 15),
         fillColor: Colors.white,
         filled: true,
-        label: Text(label),
+        label:Text(label),
         labelStyle: TextStyle(fontSize: 20),
         hintText: hint,
         hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5), fontSize: 20),

@@ -1,4 +1,6 @@
 
+import 'package:flutter_spring/models/Status.dart';
+
 class Tool{
    int id;
    int category;
@@ -6,6 +8,8 @@ class Tool{
    String imageUrl;
    String smallDescription;
    double rentPriceParHour;
+   Status? status;
+
 
    Tool({
      this.id=0,
@@ -13,8 +17,8 @@ class Tool{
      this.title="",
      this.imageUrl="",
      this.smallDescription="",
-     this.rentPriceParHour=0.0
-    
+     this.rentPriceParHour=0.0,
+     this.status=null
   });
 
   get getId => this.id;
@@ -41,6 +45,10 @@ class Tool{
 
  set setRentPriceParHour( rentPriceParHour) => this.rentPriceParHour = rentPriceParHour;
 
+  get getStatus => this.status;
 
+ set setStatus( status) => this.status = status;
+@override
+    String toString() => '{id:$id,category:$category,title:$title,imageUrl:$imageUrl,smallDescription:$smallDescription,rentPriceParHour:$rentPriceParHour}';
 }
 

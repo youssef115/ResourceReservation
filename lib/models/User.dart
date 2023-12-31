@@ -2,7 +2,8 @@
 
  class User{
 
-  
+  int? id;
+
   String? token;
   String? email;
   String? firstname;
@@ -10,7 +11,9 @@
   int? cin;
   String? role;
 
- User({ this.token="",
+ User({ 
+  this.id=0,
+  this.token="",
     this.email="",
    this.firstname="",
    this.lastname="",
@@ -18,7 +21,9 @@
    this.role=""
 
    }); 
-   
+    int? get getId => this.id;
+
+ set setId(int? id) => this.id = id;
   get getToken => this.token;
 
  set setToken( token) => this.token = token;
